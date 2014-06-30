@@ -66,6 +66,11 @@ class ComposerServiceProvider
 }
 ```
 
+#### Additional Resources
+
+* View Composers in the [Laravel Documentation](http://laravel.com/docs/responses#view-composers).
+* View Composers at [Laracasts](https://laracasts.com/lessons/view-composers).
+
 ## Application
 
 Unfortunately, the out-of-the-box functionality of Laravel View Composers is relatively limited.  
@@ -75,7 +80,7 @@ and unwieldy.  On the other hand, if we choose a Class based approach, we're for
 Provider to register each of our Composer/View associations.  In both cases, an element of indirection is
 involved as there is no single, obvious place to easily view all of our Composer/View associations.  These
 issues are only compounded if we wish to associate a single Composer with multiple Views (which is the whole
-point, of course\!).  Finally, both approaches have a glaring limitation -- it is only possible to associate a
+point, of course\!).  Finally, both approaches have a glaring limitation - it is only possible to associate a
 single View Composer with any given View.  This leads to code repetition when particular data is necessary for 
 multiple Views but is not the only data required for one or more of the Views which consumes it - the very
 issue that View Composers are intended to solve!
