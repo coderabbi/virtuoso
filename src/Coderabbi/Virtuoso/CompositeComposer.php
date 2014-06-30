@@ -27,7 +27,7 @@ abstract class CompositeComposer
 	/**
 	 * Application
 	 *
-	 * @access protected
+	 * @access private
 	 * @var Application
 	 */
 	private $app;
