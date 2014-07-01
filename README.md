@@ -196,11 +196,11 @@ You may access data provided by the Simple View Composer from the View as you no
 
 #### Composite View Composers
 
-First, create your component View Composers as above (but do not associate them with your View in the 
-Composer Array in `app\config\view.php`).
+First, create your component View Composers as above (but do not associate them with your View in the Composer 
+Array in `app\config\view.php`).
 
-Next, create your Composite View Composer, adding the component View Composers to the Composers Array of
-the Composite View Composer:
+Next, create your Composite View Composer (make sure to extend CompositeComposer), adding the component View 
+Composers to the Composers Array of the Composite View Composer:
 
 ``` php
 <?php namespace My\Project\Name\Space;
