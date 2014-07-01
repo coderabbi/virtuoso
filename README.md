@@ -19,7 +19,7 @@ bound to a View and executed whenever that View is requested.
 An example View Composer from the Laravel documentation:
 
 ``` php
-View::composer('profile'), function($view)
+View::composer('profile', function($view)
 {
 	$view->with('count', User::count());
 }
@@ -111,10 +111,10 @@ add our data to the Views via composition (seems like the very issue that View C
 right?).  Unfortunately, neither of the two common View Composer implementations allows us to associate multiple 
 View Composers with a single View\!
 
-This is the problem that Virtuoso is intended to solve.  Virtuoso allows you to create simple, single-focused View 
+This is the problem that Virtuoso is intended to solve.  **Virtuoso allows you to create simple, single-focused View 
 Composers for your data and leverage composition when providing data to your Views by associating one or more View
 Composers with a single View via a "Composite Composer" as needed.  This results in less code duplication and more 
-tightly focused View Composers. As a pleasing side benefit, Virtuoso's "Composer Array" provides a single, obvious 
+tightly focused View Composers.** As a pleasing side benefit, Virtuoso's "Composer Array" provides a single, obvious 
 location to view our Composer/View associations, limiting the impact of the indirection inherent in using View 
 Composers.
 
