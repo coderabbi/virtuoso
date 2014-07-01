@@ -88,8 +88,8 @@ Unfortunately, the out-of-the-box functionality of Laravel View Composers can be
 If we choose to go with the ```View::composer()``` format, our bootstrap files will quickly become overblown
 and unwieldy.  On the other hand, if we choose a Class based approach, in addition to creating the View Composer Classes,
 we need to register our Composer/View associations.  We might choose to create a Service Provider to register 
-each of our Composer/View associations, resulting in repetitive boilerplate code as our Service Providers proliferate.  
-Alternately, we might choose to create a single Service Provider to register all of our Composer/View associations, 
+each of our Composer/View associations, resulting in repetitive boilerplate code as our Service Providers proliferate. Alternately,
+we might choose to create a single Service Provider to register all of our Composer/View associations, 
 but this merely simplifies our bootstrap files at the expense of an unwieldy Service Provider.  Perhaps the best choice 
 is to create a Service Provider for each View and within it register its View Composer associations, but this dramatically 
 increases the indirection which already exists with View Composers.  Quite simply, keeping View Composers separate from their
