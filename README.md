@@ -45,7 +45,7 @@ Of course, when a View Composer is created as a Class, the association between t
 View must be registered, either using the following syntax:
 
 ``` php
-	View::composer('profile', 'UserCountComposer');
+View::composer('profile', 'UserCountComposer');
 ```
 or via a Service Provider:
 
@@ -64,6 +64,16 @@ class ComposerServiceProvider
   	}
  
 }
+```
+
+Data provided to the View by a View Composer may be accessed as if it had been provided by the Controller:
+
+``` php
+<ul>
+	@foreach ($data as $datum)
+		<li>{{ $datum }}</li>
+	@endforeach
+</ul>
 ```
 
 #### Additional Resources
@@ -196,17 +206,9 @@ by adding it to the Composers Array in `app\config\view.php`:
 )
 ```
 
-That's it!  Virtuoso will take care of registering the Service Provider for you!
+That's it!  Virtuoso will take care of registering the View/Composer associations for you!
 
-You may access data provided by the Simple View Composer from the View as you normally would:
-
-``` php
-<ul>
-	@foreach ($myData as $datum)
-		<li>{{ $datum }}</li>
-	@endforeach
-</ul>
-```
+You may access data provided by the Simple View Composer from the View as you normally would.
 
 #### Composite View Composers
 
@@ -244,18 +246,17 @@ it to the Composers Array in `app\config\view.php`:
 )
 ```
 
-That's it!  Virtuoso will take care of registering the Service Provider and combining the component View 
-Composers for you!
+That's it!  Virtuoso will take care of registering the View/Composer associations and combining the component 
+View Composers for you!
 
-You may access data provided by the Composite View Composer from the View as you normally would:
+You may access data provided by the Composite View Composer from the View as you normally would.
 
-``` php
-<ul>
-	@foreach ($myData as $datum)
-		<li>{{ $datum }}</li>
-	@endforeach
-</ul>
-```
+## Roadmap
+
+The addition of tests will bring the package to v1.0. It's a very simple package designed to address a single 
+limitation in the standard implementations of Laravel View Composers so at this time I have no further plans
+for the package beyond that version.  You are welcome to submit Issues or Pull Requests if you are so inclined; 
+I will give my full attention to each.
 
 ## License
 
