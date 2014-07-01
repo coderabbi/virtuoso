@@ -1,6 +1,6 @@
 {
     "name": "coderabbi/virtuoso",
-    "description": "Laravel Composable View Composers Package - Increase flexibility and reduce code duplication by composing complex view composers from simple component composers.",
+    "description": "Laravel Composable View Composers Package - Increase flexibility and reduce code duplication by easily composing complex View Composers from simple component Composers without unnecessary indirection or boilerplate code.",
     "keywords": ["laravel", "composer", "composers", "view", "views", "viewcomposer", "viewcomposers"],
     "license": "MIT",
     "authors": [{

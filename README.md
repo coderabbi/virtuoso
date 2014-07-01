@@ -4,8 +4,8 @@
 
 ####Laravel Composable View Composers Package
 
-Increase flexibility and reduce code duplication by composing complex View Composers from simple 
-component Composers.
+Increase flexibility and reduce code duplication by easily composing complex View Composers from simple 
+component Composers without unnecessary indirection or boilerplate code.
 
 ## Background
 
@@ -83,40 +83,23 @@ Data provided to the View by a View Composer may be accessed as if it had been p
 
 ## Application
 
-Unfortunately, the out-of-the-box functionality of Laravel View Composers is relatively limited.  
+Unfortunately, the out-of-the-box functionality of Laravel View Composers can be somewhat cumbersome.  
 
 If we choose to go with the ```View::composer()``` format, our bootstrap files will quickly become overblown
-and unwieldy.  On the other hand, if we choose a Class based approach, we're forced to create a Service 
-Provider to register each of our Composer/View associations.  In both cases, an element of indirection is
-involved as there is no single, obvious place to easily view all of our Composer/View associations.  These
-issues are only compounded if we wish to associate a single Composer with multiple Views (which is the whole
-point, of course\!).  Finally, both approaches have a glaring limitation - it is only possible to associate a
-single View Composer with any given View.  This leads to code repetition when particular data is necessary for 
-multiple Views but is not the only data required for one or more of the Views which consumes it - the very
-issue that View Composers are intended to solve!
+and unwieldy.  On the other hand, if we choose a Class based approach, in addition to creating the View Composer Classes,
+we need to register our Composer/View associations.  We might choose to create a Service Provider to register 
+each of our Composer/View associations, resulting in repetitive boilerplate code as our Service Providers proliferate.  
+Alternately, we might choose to create a single Service Provider to register all of our Composer/View associations, 
+but this merely simplifies our bootstrap files at the expense of an unwieldy Service Provider.  Perhaps the best choice 
+is to create a Service Provider for each View and within it register its View Composer associations, but this dramatically 
+increases the indirection which already exists with View Composers.  Quite simply, keeping View Composers separate from their
+registrations seems a wrongheaded approach.
 
-Let's look at an example.  
-
-Consider the prototypical "Admin Panel" implementation.  We may have a "Dashboard" View which includes high-level
-data we wish to highlight about our users as well as various entities unique to our domain. We're also likely to 
-have a "Users" View which may feature that same user data as the "Dashboard" but also requires additional, more 
-granular data regarding users of our system.
-
-How would we approach this challenge using View Composers?  If we create a View Composer which provides just the
-high-level user data required by the "Dashboard" View and associate that also with the "Users" View, we're going 
-to be forced to prepare the more granular user data for the "Users" View in the Controller.  What if that data 
-is itself required elsewhere? Ideally, we should be able to create separate View Composers for both the high-level 
-and granular user data and associate one or more of them with our various Views as needed - this would allow us to 
-add our data to the Views via composition (seems like the very issue that View Composers were intended to address, 
-right?).  Unfortunately, neither of the two common View Composer implementations allows us to associate multiple 
-View Composers with a single View\!
-
-This is the problem that Virtuoso is intended to solve.  **Virtuoso allows you to create simple, single-focused View 
-Composers for your data and leverage composition when providing data to your Views by associating one or more View
-Composers with a single View via a "Composite Composer" as needed.  This results in less code duplication and more 
-tightly focused View Composers.** As a pleasing side benefit, Virtuoso's "Composer Array" provides a single, obvious 
-location to view our Composer/View associations, limiting the impact of the indirection inherent in using View 
-Composers.
+This is the problem that Virtuoso is intended to solve.  Virtuoso allows you to easily create simple, single-focused 
+View Composers for your data and leverage composition when providing data to your Views by associating one or more View
+Composers with a single View via a "Composite Composer" as needed without any unnecessary indirection or repetitive 
+boilerplate code - all of your Composer/View associations can be found in a single location and all without writing any
+new Service Providers!
 
 ## Requirements
 
@@ -134,8 +117,8 @@ and the following versions of Laravel:
 
 ## Installation
 
-First, install Virtuoso through Composer (Virtuoso on [Packagist](https://packagist.org/packages/coderabbi/virtuoso)), either by adding it to the Require Array of your 
-`composer.json`:
+First, install Virtuoso through Composer (Virtuoso on [Packagist](https://packagist.org/packages/coderabbi/virtuoso)), 
+either by adding it to the Require Array of your `composer.json`:
 
 ```js
 "require": {
@@ -206,7 +189,8 @@ by adding it to the Composers Array in `app\config\view.php`:
 )
 ```
 
-That's it!  Virtuoso will take care of registering the View/Composer associations for you!
+That's it!  Virtuoso will take care of registering the View/Composer associations for you - no Service Provider
+required!
 
 You may access data provided by the Simple View Composer from the View as you normally would.
 
@@ -246,8 +230,8 @@ it to the Composers Array in `app\config\view.php`:
 )
 ```
 
-That's it!  Virtuoso will take care of registering the View/Composer associations and combining the component 
-View Composers for you!
+That's it!  Virtuoso will take care of registering the individual View/Composer associations for you - no Service
+Provider Required!
 
 You may access data provided by the Composite View Composer from the View as you normally would.
 
