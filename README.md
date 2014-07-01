@@ -60,7 +60,7 @@ class ComposerServiceProvider
  
 	public function register()
   	{
-    	$this->app->view->composer('profile', 'My\Project\Name\Space\UserCountComposer');
+    	$this->app['view']->composer('profile', 'My\Project\Name\Space\UserCountComposer');
   	}
  
 }
@@ -108,9 +108,23 @@ tightly focused View Composers. As a pleasing side benefit, Virtuoso's "Composer
 location to view our Composer/View associations, limiting the impact of the indirection inherent in using View 
 Composers.
 
+## Requirements
+
+Virtuoso supports the following versions of PHP:
+
+* PHP 5.4.\*
+* PHP 5.5.\*
+* PHP 5.6.\*
+* HHVM
+
+and the following versions of Laravel:
+ 
+* Laravel 4.1.\*
+* Laravel 4.2.\*
+
 ## Installation
 
-First, install Virtuoso through Composer, either by adding it to the Require Array of your 
+First, install Virtuoso through Composer (Virtuoso on [Packagist](https://packagist.org/packages/coderabbi/virtuoso)), either by adding it to the Require Array of your 
 `composer.json`:
 
 ```js
@@ -161,7 +175,7 @@ class MyFirstSimpleComposer
 		$view->with('myData', $this->getMyData());
 	}
 	
-	protected function getMyData()
+	private function getMyData()
 	{
 		// do your thing here
 	}
@@ -213,7 +227,7 @@ class MyFirstCompositeComposer
 
 	protected $composers = array(
 		'MyFirstSimpleComposer',
-		'MySecondSimpleComposerComposer',
+		'MySecondSimpleComposer',
 		'MyThirdSimpleComposer'
 	);
 	
@@ -246,3 +260,8 @@ You may access data provided by the Composite View Composer from the View as you
 ## License
 
 This package is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+Further details may be found in the [LICENSE](https://github.com/coderabbi/virtuoso/blob/master/LICENSE) file.
+
+## Author
+
+Follow [@coderabbi](http://twitter.com/coderabbi) on Twitter.
