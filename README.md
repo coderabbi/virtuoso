@@ -91,14 +91,13 @@ we need to register our Composer/View associations.  We might choose to create a
 each of our Composer/View associations, resulting in repetitive boilerplate code as our Service Providers proliferate. Alternately,
 we might choose to create a single Service Provider to register all of our Composer/View associations, 
 but this merely simplifies our bootstrap files at the expense of an unwieldy Service Provider.  Perhaps the best choice 
-is to create a Service Provider for each View and within it register its View Composer associations, but this dramatically 
-increases the indirection which already exists with View Composers.  Quite simply, keeping View Composers separate from their
-registrations seems a wrongheaded approach.
+is to create a Service Provider for each View and within it register its View Composer associations, but this requires a
+fair amount of boilerplate and dramatically increases the indirection which already exists with View Composers.
 
-This is the problem that Virtuoso is intended to solve.  Virtuoso allows you to easily create simple, single-focused 
+This is the challenge that Virtuoso is intended to meet.  Virtuoso allows you to easily create simple, single-focused 
 View Composers for your data and leverage composition when providing data to your Views by associating one or more View
-Composers with a single View via a "Composite Composer" as needed without any unnecessary indirection or repetitive 
-boilerplate code - all of your Composer/View associations can be found in a single location and all without writing any
+Composers with a single View via a "Composite Composer" as needed _without any unnecessary indirection or repetitive 
+boilerplate code_ - all of your Composer/View associations can be found in a single location and all without writing any
 new Service Providers!
 
 ## Requirements
