@@ -87,12 +87,13 @@ Unfortunately, the out-of-the-box functionality of Laravel View Composers can be
 
 If we choose to go with the ```View::composer()``` format, our bootstrap files will quickly become overblown
 and unwieldy.  On the other hand, if we choose a Class based approach, in addition to creating the View Composer Classes,
-we need to register our Composer/View associations.  We might choose to create a Service Provider to register 
-each of our Composer/View associations, resulting in repetitive boilerplate code as our Service Providers proliferate. Alternately,
-we might choose to create a single Service Provider to register all of our Composer/View associations, 
-but this merely simplifies our bootstrap files at the expense of an unwieldy Service Provider.  Perhaps the best choice 
-is to create a Service Provider for each View and within it register its View Composer associations, but this requires a
-fair amount of boilerplate and dramatically increases the indirection which already exists with View Composers.
+we need to register our Composer/View associations.  This presents its own challenges.  We might choose to create a 
+Service Provider to register each of our Composer/View associations, resulting in repetitive boilerplate code as our 
+Service Providers proliferate. Alternately, we might choose to create a single Service Provider to register all of our 
+Composer/View associations, but this merely simplifies our bootstrap files at the expense of an unwieldy Service Provider.  
+Perhaps the best choice is to create a Service Provider for each View and within it register its View Composer 
+associations, but this requires a fair amount of boilerplate and dramatically increases the indirection which already 
+exists with View Composers.
 
 This is the challenge that Virtuoso is intended to meet.  Virtuoso allows you to easily create simple, single-focused 
 View Composers for your data and leverage composition when providing data to your Views by associating one or more View
@@ -188,18 +189,18 @@ by adding it to the Composers Array in `app\config\view.php`:
 )
 ```
 
-That's it!  Virtuoso will take care of registering the View/Composer associations for you - no Service Provider
+That's it!  Virtuoso will take care of registering the View/Composer associations for you - no new Service Providers
 required!
 
 You may access data provided by the Simple View Composer from the View as you normally would.
 
 #### Composite View Composers
 
-First, create your component View Composers as above (but do not associate them with your View in the Composer 
-Array in `app\config\view.php`).
+First, create the simple View Composers which will together comprise the Composite View Composer as above (but do not 
+associate them with your View in the Composer Array in `app\config\view.php`).
 
-Next, create your Composite View Composer (make sure to extend CompositeComposer), adding the component View 
-Composers to the Composers Array of the Composite View Composer:
+Next, create your Composite View Composer (make sure to extend CompositeComposer) and add the component View 
+Composers to its `$composers` array:
 
 ``` php
 <?php namespace My\Project\Name\Space;
@@ -229,8 +230,8 @@ it to the Composers Array in `app\config\view.php`:
 )
 ```
 
-That's it!  Virtuoso will take care of registering the individual View/Composer associations for you - no Service
-Provider Required!
+That's it!  Virtuoso will take care of registering the individual View/Composer associations for you - no new Service
+Providers Required!
 
 You may access data provided by the Composite View Composer from the View as you normally would.
 
