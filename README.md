@@ -1,8 +1,8 @@
 ![image](https://dl.dropboxusercontent.com/s/em253abjckwr6k4/Virtuoso.png)
 
-#Laravel Virtuoso
+# Laravel Virtuoso
 
-####Laravel Composable View Composers Package
+#### Laravel Composable View Composers Package
 
 Increase flexibility and reduce code duplication by easily composing complex View Composers from simple 
 component Composers without unnecessary indirection or boilerplate code.
